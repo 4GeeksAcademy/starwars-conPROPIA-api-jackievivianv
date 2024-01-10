@@ -2,31 +2,28 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { CharacterInfo } from "../component/CharacterInfo.js";
 import { PlanetsInfo } from "../component/PlanetsInfo.js";
 
-export const Single = () => {
+export const Planets = () => {
 
 
 	const { store, actions } = useContext(Context);
 
-	console.log(store.charactersInfo.name);
-
-	console.log(store.charactersDescription.description);
-	console.log(typeof store.charactersInfo);
+	
 
 	const params = useParams();
 
 
 	useEffect(() => {
-		actions.getCharactersInfo(params.theid);
+		actions.getPlanetsInfo(params.theid);
 	}, []);
 
 
 	return (
 		<div className="jumbotron">
 			
-			<CharacterInfo
+
+			<PlanetsInfo
 				key={params.theid}
 				name={store.charactersInfo.name}
 				eye_color={store.charactersInfo.eye_color}
@@ -36,7 +33,6 @@ export const Single = () => {
 				skin_color={store.charactersInfo.skin_color}
 				birth_year={store.charactersInfo.birth_year}
 			/>
-
 
 			<hr className="my-4" />
 
@@ -48,6 +44,3 @@ export const Single = () => {
 		</div>
 	);
 };
-
-
-
