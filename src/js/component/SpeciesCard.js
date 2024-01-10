@@ -6,7 +6,7 @@ import { Context } from "../store/appContext.js";
 
 
 
-export const PlanetsCard = (props) => {
+export const SpeciesCard = (props) => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
@@ -25,7 +25,7 @@ export const PlanetsCard = (props) => {
 		</div>
 		<div className="card-body d-flex justify-content-between">
 
-			<Link className="btn btn-primary" to={`/planets/${props.id}`} >
+			<Link className="btn btn-primary" to={`/species/${props.id}`} >
 						Learn More...
 			</Link>
 			<button className="btn btn-warning" >Go</button>
@@ -41,17 +41,8 @@ export const PlanetsCard = (props) => {
  * your component's properties
  **/
 
-PlanetsCard.propTypes = {
+SpeciesCard.propTypes = {
 	history: PropTypes.object,
 	name: PropTypes.string,
 	id: PropTypes.number
-};
-
-/**
- * Define the default values for
- * your component's properties
- **/
-
-PlanetsCard.defaultProps = {
-	
 };

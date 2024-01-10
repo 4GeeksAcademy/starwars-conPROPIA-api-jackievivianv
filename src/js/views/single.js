@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { CharacterInfo } from "../component/CharacterInfo.js";
-import { PlanetsInfo } from "../component/PlanetsInfo.js";
+
 
 export const Single = () => {
 
@@ -12,7 +12,7 @@ export const Single = () => {
 
 	console.log(store.charactersInfo.name);
 
-	console.log(store.charactersDescription.description);
+	
 	console.log(typeof store.charactersInfo);
 
 	const params = useParams();

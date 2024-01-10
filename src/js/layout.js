@@ -7,6 +7,7 @@ import { Demo } from "./views/demo";
 import { CharacterPerfil } from "./views/CharacterPerfil.js";
 import { Single } from "./views/single";
 import { Planets } from "./views/planets";
+import { Species } from "./views/species";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -28,6 +29,7 @@ const Layout = () => {
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="/planets/:theid" element={<Planets />} />
+						<Route path="/species/:theid" element={<Species />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

@@ -16,7 +16,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			charactersInfo: {},
 			planets: [],
-			planetsInfo: {}
+			planetsInfo: {},
+			species: [],
+			speciesInfo: {},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -72,9 +74,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://www.swapi.tech/api/planets")
 				.then(res => {
 					console.log(res.status)
-					//if (res.status === 200){
-					//	getActions().getCharactersInfo();
-					//}
 					return res.json();
 				})
 
@@ -82,13 +81,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err))
 			},
 			getPlanetsInfo: (planetId) => {
-				fetch(`https://www.swapi.tech/api/people/${planetId}`)
+				fetch(`https://www.swapi.tech/api/planets/${planetId}`)
 				  .then(res => {
 					console.log(res.status);
 					return res.json();
 				  })
 				
 				.then(data => setStore({ planetsInfo: data.result.properties }))
+				  
+				.catch(err => console.error(err));
+			  
+			
+			},
+			getAllSpecies: () => {
+				fetch("https://www.swapi.tech/api/species")
+				.then(res => {
+					console.log(res.status)
+					return res.json();
+				})
+
+				.then(data => setStore({ species: data.results }))
+				.catch(err => console.error(err))
+			},
+			getSpeciesInfo: (speciesId) => {
+				fetch(`https://www.swapi.tech/api/species/${speciesId}`)
+				  .then(res => {
+					console.log(res.status);
+					return res.json();
+				  })
+				
+				.then(data => setStore({ speciesInfo: data.result.properties }))
 				  
 				.catch(err => console.error(err));
 			  

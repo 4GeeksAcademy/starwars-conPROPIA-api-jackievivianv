@@ -17,11 +17,11 @@ export const CharacterInfo = (props) => {
 
 	return (
 
-		<div className="mb-3 mx-auto container d-flex justify-content-center col-lg-8 col-md-10 col-sm-12" style={{width: "38rem"}}>
+		<div className="mb-3 mx-auto container d-flex justify-content-center col-lg-8 col-md-10 col-sm-12" style={{width: "50rem"}}>
 
 		
-			<img src="https://www.gammaracionero.es/wp-content/uploads/2016/09/placeholder-800x600.png" className="card-img-top p-0" alt="..."/>
-		<div className="card-body justify-content-center ml-4 col-6">
+			<img src="https://www.gammaracionero.es/wp-content/uploads/2016/09/placeholder-800x600.png" className="card-img-top p-3" alt="..."/>
+		<div className="card-body justify-content-center ml-4 col-6 mx-3">
 		  <h1 className="card-title text-danger">{props.name}</h1>
 		  <p><strong>Birth Year:</strong>{props.birth_year}</p>
 		  <p><strong>Gender:</strong> {props.gender}</p>
@@ -56,9 +56,7 @@ CharacterInfo.propTypes = {
 	created: PropTypes.number,
 	edited: PropTypes.number,
 	homeworld: PropTypes.string,
-	url: PropTypes.string,
-	onInfo: PropTypes.func,
-	description: PropTypes.string
+	url: PropTypes.string
 };
 
 /**

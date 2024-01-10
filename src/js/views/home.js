@@ -4,7 +4,7 @@ import { Context } from "../store/appContext.js";
 
 import { CharactersCard } from "../component/CharactersCard.js";
 import { PlanetsCard } from "../component/PlanetsCard.js";
-import { CharacterInfo } from "../component/CharacterInfo.js";
+import { SpeciesCard } from "../component/SpeciesCard.js";
 
 
 
@@ -27,6 +27,7 @@ export const Home = () => {
 	useEffect(() => {
 		actions.getAllCharacters();
 		actions.getAllPlanets();
+		actions.getAllSpecies();
 	}, []);
 
 
@@ -53,6 +54,19 @@ export const Home = () => {
 						<ul className="list-group d-flex flex-row">
 							{store.planets.map(item => (
 							<PlanetsCard key={item.uid}
+								id={item.uid}
+								name={item.name}
+						/>
+						))}
+					</ul>
+				</div>
+			</div>
+			<div className="container-fluid mt-5">
+				<h1 className="text-danger mx-3">Species</h1>
+					<div className="container-fluid d-flex flex-row">
+						<ul className="list-group d-flex flex-row">
+							{store.species.map(item => (
+							<SpeciesCard key={item.uid}
 								id={item.uid}
 								name={item.name}
 						/>

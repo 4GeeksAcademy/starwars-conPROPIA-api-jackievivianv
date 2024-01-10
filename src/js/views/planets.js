@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { PlanetsInfo } from "../component/PlanetsInfo.js";
 
+
 export const Planets = () => {
 
 
@@ -25,13 +26,16 @@ export const Planets = () => {
 
 			<PlanetsInfo
 				key={params.theid}
-				name={store.charactersInfo.name}
-				eye_color={store.charactersInfo.eye_color}
-				hair_color={store.charactersInfo.hair_color}
-				mass={store.charactersInfo.mass}
-				gender={store.charactersInfo.gender}
-				skin_color={store.charactersInfo.skin_color}
-				birth_year={store.charactersInfo.birth_year}
+				name={store.planetsInfo.name}
+				diameter={store.planetsInfo.diameter}
+				rotation_period={store.planetsInfo.rotation_period}
+				orbital_period={store.planetsInfo.orbital_period}
+				gravity={store.planetsInfo.gravity}
+				population={store.planetsInfo.population}
+				climate={store.planetsInfo.climate}
+				terrain={store.planetsInfo.terrain}
+				surface_water={store.planetsInfo.surface_water}
+
 			/>
 
 			<hr className="my-4" />
