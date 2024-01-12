@@ -18,11 +18,7 @@ export const Home = () => {
 
 
 	const { store, actions } = useContext(Context);
-	console.log(state.characterId);
 
-	
-
-	console.log(state);
 
 	useEffect(() => {
 		actions.getAllCharacters();
@@ -31,19 +27,21 @@ export const Home = () => {
 	}, []);
 
 
-	console.log(store.characters);
+
 
 	return (
-		<div className="col-lg-12 col-md-12 col-sm-12">
+		<div>
 			<div className="container-fluid mt-5">
 				<h1 className="text-danger mx-3">Characters</h1>
 					<div className="container-fluid d-flex flex-row">
-						<ul className="list-group d-flex flex-row">
+						<ul className="d-flex flex-nowrap flex-row overflow-scroll gap-3 px-0 mx-2">
 							{store.characters.map(item => (
+							<li className="col-4 px-0 w-auto my-2">
 							<CharactersCard key={item.uid}
 								id={item.uid}
 								name={item.name}
 						/>
+						</li>
 						))}
 					</ul>
 				</div>
@@ -51,12 +49,15 @@ export const Home = () => {
 			<div className="container-fluid mt-5">
 				<h1 className="text-danger mx-3">Planets</h1>
 					<div className="container-fluid d-flex flex-row">
-						<ul className="list-group d-flex flex-row">
+						<ul className="d-flex flex-nowrap flex-row overflow-scroll gap-3 px-0 mx-2">
 							{store.planets.map(item => (
-							<PlanetsCard key={item.uid}
+							<li className="col-4 px-0 w-auto my-2">
+								<PlanetsCard key={item.uid}
 								id={item.uid}
 								name={item.name}
-						/>
+								
+								/>
+							</li>
 						))}
 					</ul>
 				</div>
@@ -64,12 +65,14 @@ export const Home = () => {
 			<div className="container-fluid mt-5">
 				<h1 className="text-danger mx-3">Species</h1>
 					<div className="container-fluid d-flex flex-row">
-						<ul className="list-group d-flex flex-row">
+						<ul className="d-flex flex-nowrap flex-row overflow-scroll gap-3 px-0 mx-2">
 							{store.species.map(item => (
-							<SpeciesCard key={item.uid}
+							<li className="col-4 px-0 w-auto my-2">	
+								<SpeciesCard key={item.uid}
 								id={item.uid}
 								name={item.name}
-						/>
+								/>
+							</li>
 						))}
 					</ul>
 				</div>

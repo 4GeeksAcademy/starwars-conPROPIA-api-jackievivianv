@@ -10,10 +10,7 @@ export const Single = () => {
 
 	const { store, actions } = useContext(Context);
 
-	console.log(store.charactersInfo.name);
 
-	
-	console.log(typeof store.charactersInfo);
 
 	const params = useParams();
 

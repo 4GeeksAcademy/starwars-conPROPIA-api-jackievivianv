@@ -13,13 +13,11 @@ export const SpeciesCard = (props) => {
 
 	const { store, actions } = useContext(Context);
 
-	console.log(props.id);
-	console.log(props.name);
 
 
 	return (
 		<div className="card mx-2 pl-0" style={{width: "18rem"}}>
-			<img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" className="card-img-top" alt="..."/>
+			<img src={`https://starwars-visualguide.com/assets/img/species/${props.id}.jpg`}  className="card-img-top" alt="..."/>
 		<div className="card-body">
 		  <h5 className="card-title">{props.name}</h5>
 		</div>
@@ -28,7 +26,7 @@ export const SpeciesCard = (props) => {
 			<Link className="btn btn-primary" to={`/species/${props.id}`} >
 						Learn More...
 			</Link>
-			<button className="btn btn-warning" >Go</button>
+			<button className="btn btn-warning" onClick={() => actions.addFavoritesSpecies(props.name)}>♥</button>
 		</div>
 	  </div>
 	);

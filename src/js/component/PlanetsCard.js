@@ -19,7 +19,7 @@ export const PlanetsCard = (props) => {
 
 	return (
 		<div className="card mx-2 pl-0" style={{width: "18rem"}}>
-			<img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" className="card-img-top" alt="..."/>
+			<img src={`https://starwars-visualguide.com/assets/img/planets/${props.id}.jpg`}  className="card-img-top" alt="..."/>
 		<div className="card-body">
 		  <h5 className="card-title">{props.name}</h5>
 		</div>
@@ -28,7 +28,7 @@ export const PlanetsCard = (props) => {
 			<Link className="btn btn-primary" to={`/planets/${props.id}`} >
 						Learn More...
 			</Link>
-			<button className="btn btn-warning" >Go</button>
+			<button className="btn btn-warning" onClick={() => actions.addFavoritesPlanets(props.name)}>♥</button>
 		</div>
 	  </div>
 	);

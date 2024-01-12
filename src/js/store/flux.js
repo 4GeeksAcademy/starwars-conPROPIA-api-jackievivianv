@@ -19,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetsInfo: {},
 			species: [],
 			speciesInfo: {},
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -109,12 +110,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(res.status);
 					return res.json();
 				  })
-				
 				.then(data => setStore({ speciesInfo: data.result.properties }))
-				  
 				.catch(err => console.error(err));
-			  
-			
+	
+			},
+			addFavoritesCharacters: (characterName) => {
+				if (getStore().favorites.includes(characterName) === false) {
+					setStore({ favorites: [...getStore().favorites, characterName] })
+					console.log(getStore().favorites);
+				}
+			},
+			addFavoritesPlanets: (planetName) => {
+				if (getStore().favorites.includes(planetName) === false) {
+					setStore({ favorites: [...getStore().favorites, planetName] })
+					console.log(getStore().favorites);
+				}
+			},
+			addFavoritesSpecies: (speciesName) => {
+				if (getStore().favorites.includes(speciesName) === false) {
+					setStore({ favorites: [...getStore().favorites, speciesName] })
+					console.log(getStore().favorites);
+				}
+			},
+			deleteFavorites: (deletedFavorite) => {
+					setStore({ favorites: getStore().favorites.filter((i, _) => i !== deletedFavorite) })
+					console.log(getStore().favorites);
+				
+
 			}
 		}
 	};

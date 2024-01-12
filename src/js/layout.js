@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
-import { CharacterPerfil } from "./views/CharacterPerfil.js";
+
 import { Single } from "./views/single";
 import { Planets } from "./views/planets";
 import { Species } from "./views/species";
