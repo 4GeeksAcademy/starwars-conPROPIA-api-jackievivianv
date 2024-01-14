@@ -34,6 +34,7 @@ export const Species = () => {
 				language={store.speciesInfo.language}
                 average_height={store.speciesInfo.average_height}
 				average_lifespan={store.speciesInfo.average_lifespan}
+				id={params.theid}
 			/>
 
 

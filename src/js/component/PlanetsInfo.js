@@ -20,7 +20,7 @@ export const PlanetsInfo = (props) => {
 		<div className="mb-3 mx-auto container d-flex justify-content-center col-lg-8 col-md-10 col-sm-12" style={{width: "50rem"}}>
 
 		
-			<img src="https://www.gammaracionero.es/wp-content/uploads/2016/09/placeholder-800x600.png" className="card-img-top p-3" alt="..."/>
+			<img src={`https://starwars-visualguide.com/assets/img/planets/${props.id}.jpg`} className="card-img-top p- w-50" alt="..."/>
 		<div className="card-body justify-content-center ml-4 col-6 mx-3">
 		  <h1 className="card-title text-danger">{props.name}</h1>
 		  <p><strong>Diameter:</strong>{props.diameter}</p>

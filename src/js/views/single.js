@@ -32,6 +32,7 @@ export const Single = () => {
 				gender={store.charactersInfo.gender}
 				skin_color={store.charactersInfo.skin_color}
 				birth_year={store.charactersInfo.birth_year}
+				id={params.theid}
 			/>
 
 

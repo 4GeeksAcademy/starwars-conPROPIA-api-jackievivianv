@@ -35,6 +35,7 @@ export const Planets = () => {
 				climate={store.planetsInfo.climate}
 				terrain={store.planetsInfo.terrain}
 				surface_water={store.planetsInfo.surface_water}
+				id={params.theid}
 
 			/>
 
