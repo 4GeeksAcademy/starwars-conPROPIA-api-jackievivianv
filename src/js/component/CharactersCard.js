@@ -18,6 +18,9 @@ export const CharactersCard = (props) => {
     const [styleHeart, setStyleHeart] = useState("fa-heart")
 	const [favIsClicked, setfavIsClicked] = useState(false) //estado para detectar si el botón fav esta clicado y que no se cambie el style
 
+	
+
+
 	// boton Learn more que cuando haya hover se ponga el texto blanco
     const handleHoverInButton = () => {
         setStyleTextButtonLearnMore("text-white");
@@ -46,6 +49,7 @@ export const CharactersCard = (props) => {
         setfavIsClicked(true);
         setStyleFavoriteButton("btn-warning");
         setStyleHeart(`fa-star text-white`)
+		
     }
 
 
@@ -58,12 +62,12 @@ export const CharactersCard = (props) => {
 		</div>
 		<div className="card-body d-flex justify-content-between">
 
-		<button type="button" className="btn btn-sm m-3 btn-outline-info" onMouseEnter={handleHoverInButton} onMouseLeave={handleHoverOutButton}>
+			<button type="button" className="btn btn-sm m-1 btn-outline-info" onMouseEnter={handleHoverInButton} onMouseLeave={handleHoverOutButton}>
                         <Link className={`btn text-info ${styleTextButtonLearnMore}`} to={`/single/${props.id}`}>
-                            Learn more!
+                            Learn more...
                         </Link>
-                    </button>
-			<button type="button" className={`btn ${styleFavoriteButton} p-3 btn-sm m-3`} onMouseEnter={handleHoverFav} onMouseLeave={handleLeaveFav} onClick={() => { actions.addFavoritesCharacters(props.name); handleClickFavButton(); }} >
+            </button>
+			<button type="button" className={`btn ${styleFavoriteButton} p-3 btn-sm m-1`} onMouseEnter={handleHoverFav} onMouseLeave={handleLeaveFav} onClick={() => { actions.addFavoritesCharacters(props.name); handleClickFavButton(); }} >
 			<i className={`fa fa-heart ${styleHeart}`}></i>
 			</button>
 		</div>
