@@ -48,6 +48,18 @@ export const SpeciesCard = (props) => {
         setStyleHeart(`fa-star text-white`)
     }
 
+	useEffect(() => {
+		const isInFavorites = store.favorites.some(item => item.name === props.name);
+		console.log(isInFavorites)
+        if (isInFavorites) {
+            setStyleFavoriteButton("btn-warning");
+            setStyleHeart(`fa-star text-white`)
+        } else {
+            setStyleFavoriteButton("btn-outline-warning")
+            setStyleHeart("")
+            setfavIsClicked(false)
+        }
+    }, [store.favorites]) //Cada vez que cambie store.favorites se ejecutará el useEffect.
 
 
 
@@ -63,8 +75,8 @@ export const SpeciesCard = (props) => {
 						Learn More...
 				</Link>
 			</button>
-			<button type="button" className={`btn ${styleFavoriteButton} p-3 btn-sm m-3`} onMouseEnter={handleHoverFav} onMouseLeave={handleLeaveFav} onClick={() => { actions.addFavoritesCharacters(props.name); handleClickFavButton(); }} >
-			<i className={`fa fa-heart ${styleHeart}`}></i>
+			<button type="button" className={`btn ${styleFavoriteButton} p-3 btn-sm m-3`} onMouseEnter={handleHoverFav} onMouseLeave={handleLeaveFav} onClick={() => { actions.addFavoritesCharacters(props.name, props.id, "species"); handleClickFavButton(); }} >
+			<i className={`fa ${favIsClicked ? "fa-star text-white" : "fa-heart"}`}></i>
 			</button>
 		</div>
 	  </div>

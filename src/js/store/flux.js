@@ -114,27 +114,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err));
 	
 			},
-			addFavoritesCharacters: (characterName) => {
-				if (getStore().favorites.includes(characterName) === false) {
-					setStore({ favorites: [...getStore().favorites, characterName] })
+			addFavoritesCharacters: (characterName, characterId, characterType) => {
+				let newArray = getStore().favorites.filter((item) => item.name == characterName)
+				if (newArray.length === 0) {
+					setStore({ favorites: [...getStore().favorites, {name: characterName, idCharacter: characterId, type: characterType}] })
+					
+				}
+				
+			},
+			addFavoritesPlanets: (planetName, planetId, planetType) => {
+				let newArray = getStore().favorites.filter((item) => item.name == planetName)
+				if (newArray.length === 0) {
+					setStore({ favorites: [...getStore().favorites, {name: planetName, idPlamet: planetId, type: planetType}] })
 					console.log(getStore().favorites);
 				}
 			},
-			addFavoritesPlanets: (planetName) => {
-				if (getStore().favorites.includes(planetName) === false) {
-					setStore({ favorites: [...getStore().favorites, planetName] })
-					console.log(getStore().favorites);
-				}
-			},
-			addFavoritesSpecies: (speciesName) => {
-				if (getStore().favorites.includes(speciesName) === false) {
-					setStore({ favorites: [...getStore().favorites, speciesName] })
+			addFavoritesSpecies: (speciesName, specieId, specieType) => {
+				let newArray = getStore().favorites.filter((item) => item.name == speciesName)
+				if (newArray.length === 0) {
+					setStore({ favorites: [...getStore().favorites, {name: speciesName, idSpecie: specieId, type: specieType}] })
 					console.log(getStore().favorites);
 				}
 			},
 			deleteFavorites: (deletedFavorite) => {
-					setStore({ favorites: getStore().favorites.filter((i, _) => i !== deletedFavorite) })
+					setStore({ favorites: getStore().favorites.filter((i, _) => i.name !== deletedFavorite) })
 					console.log(getStore().favorites);
+					
 				
 
 			}

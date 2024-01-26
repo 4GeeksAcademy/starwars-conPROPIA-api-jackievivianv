@@ -17,7 +17,7 @@ export const Single = () => {
 
 	useEffect(() => {
 		actions.getCharactersInfo(params.theid);
-	}, []);
+	}, [params.theid]);
 
 
 	return (
@@ -33,6 +33,7 @@ export const Single = () => {
 				skin_color={store.charactersInfo.skin_color}
 				birth_year={store.charactersInfo.birth_year}
 				id={params.theid}
+				type={store.charactersInfo.type}
 			/>
 
 

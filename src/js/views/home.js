@@ -36,8 +36,8 @@ export const Home = () => {
 					<div className="container-fluid d-flex flex-row">
 						<ul className="d-flex flex-nowrap flex-row overflow-scroll gap-3 px-0 mx-2">
 							{store.characters.map(item => (
-							<li className="col-4 px-0 w-auto my-2">
-							<CharactersCard key={item.uid}
+							<li className="col-4 px-0 w-auto my-2" key={item.uid}>
+							<CharactersCard 
 								id={item.uid}
 								name={item.name}
 						/>
@@ -51,8 +51,8 @@ export const Home = () => {
 					<div className="container-fluid d-flex flex-row">
 						<ul className="d-flex flex-nowrap flex-row overflow-scroll gap-3 px-0 mx-2">
 							{store.planets.map(item => (
-							<li className="col-4 px-0 w-auto my-2">
-								<PlanetsCard key={item.uid}
+							<li className="col-4 px-0 w-auto my-2" key={item.uid}>
+								<PlanetsCard 
 								id={item.uid}
 								name={item.name}
 								
@@ -67,8 +67,8 @@ export const Home = () => {
 					<div className="container-fluid d-flex flex-row">
 						<ul className="d-flex flex-nowrap flex-row overflow-scroll gap-3 px-0 mx-2">
 							{store.species.map(item => (
-							<li className="col-4 px-0 w-auto my-2">	
-								<SpeciesCard key={item.uid}
+							<li className="col-4 px-0 w-auto my-2" key={item.uid}>	
+								<SpeciesCard 
 								id={item.uid}
 								name={item.name}
 								/>

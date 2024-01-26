@@ -42,17 +42,31 @@ export const CharactersCard = (props) => {
 		 if (!favIsClicked) {
             setStyleFavoriteButton("btn-outline-warning")
             setStyleHeart("") //quitamos la clase fa-star para que no aparezca la estrella y aparezca el corazón
-        }
+        } 
+
+
 	}
 
 	const handleClickFavButton = () => {
-        setfavIsClicked(true);
-        setStyleFavoriteButton("btn-warning");
-        setStyleHeart(`fa-star text-white`)
-		
+			setfavIsClicked(true);
+			setStyleFavoriteButton("btn-warning");
+			setStyleHeart("fa-star text-white");	
     }
 
 
+	useEffect(() => {
+		const isInFavorites = store.favorites.some(item => item.name === props.name);
+		console.log(isInFavorites)
+        if (isInFavorites) {
+            setStyleFavoriteButton("btn-warning");
+            setStyleHeart(`fa-star text-white`)
+        } else {
+            setStyleFavoriteButton("btn-outline-warning")
+            setStyleHeart("")
+            setfavIsClicked(false)
+        }
+    }, [store.favorites]) //Cada vez que cambie store.favorites se ejecutará el useEffect.
+	
 
 	return (
 		<div className="card mx-0 pl-0" style={{width: "18rem"}}>
@@ -67,8 +81,8 @@ export const CharactersCard = (props) => {
                             Learn more...
                         </Link>
             </button>
-			<button type="button" className={`btn ${styleFavoriteButton} p-3 btn-sm m-1`} onMouseEnter={handleHoverFav} onMouseLeave={handleLeaveFav} onClick={() => { actions.addFavoritesCharacters(props.name); handleClickFavButton(); }} >
-			<i className={`fa fa-heart ${styleHeart}`}></i>
+			<button type="button" className={`btn ${styleFavoriteButton} p-3 btn-sm m-1`} onMouseEnter={handleHoverFav} onMouseLeave={handleLeaveFav} onClick={() => { actions.addFavoritesCharacters(props.name, props.id, "single"); handleClickFavButton(); }} >
+			<i className={`fa ${favIsClicked ? "fa-star text-white" : "fa-heart"}`}></i>
 			</button>
 		</div>
 	  </div>
@@ -88,7 +102,8 @@ CharactersCard.propTypes = {
 	hair_color: PropTypes.string,
 	gender: PropTypes.string,
 	name: PropTypes.string,
-	id: PropTypes.number,
+	id: PropTypes.string,
+	type: PropTypes.string,
 	onInfo: PropTypes.func
 };
 

@@ -12,7 +12,7 @@ export const Navbar = () => {
 
 	const { store, actions } = useContext(Context);
 
-	const contador = 0
+ 	console.log(store.favoritesDatos)
 
 
 	return (
@@ -30,8 +30,8 @@ export const Navbar = () => {
     				<ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
 					{store.favorites.length > 0 && store.favorites.map((item, index) => (
 					<div className="d-flex flex-row dropdown-item align-items-center justify-content-between">
-      					<li key={index} ><Link className="align-self-start text-reset text-decoration-none pe-2 mr-5" to={``}>{item}</Link>
-							<i className="fa fa-solid fa-trash" onClick={() => actions.deleteFavorites(item)}></i>
+      					<li key={index} ><Link className="align-self-start text-reset text-decoration-none pe-2 mr-5" to={`${item.type}/${item.idCharacter || item.idPlanet || item.idSpecie}`}>{item.name}</Link>
+							<i className="fa fa-solid fa-trash" onClick={() => actions.deleteFavorites(item.name)}></i>
 						</li>
 						
 					</div>
