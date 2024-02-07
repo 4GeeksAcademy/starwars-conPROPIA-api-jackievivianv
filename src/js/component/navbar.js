@@ -23,6 +23,13 @@ export const Navbar = () => {
 			<div className="ml-auto">
 			
 				<div className="btn-group" role="group">
+				
+				<Link to="/login">
+					<div>
+					<button type="button" className="btn btn-secondary">Login</button>
+					</div>
+				</Link>
+				
     				<button id="btnGroupDrop1" type="button" className="btn btn-primary dropdown-toggle mx-3 mr-5" data-bs-toggle="dropdown" aria-expanded="false">
      					 Favoritos
 					<span className="bg-danger rounded-circle p-1 px-2 mx-1">{store.favorites.length}</span>

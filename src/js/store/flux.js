@@ -139,12 +139,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteFavorites: (deletedFavorite) => {
 					setStore({ favorites: getStore().favorites.filter((i, _) => i.name !== deletedFavorite) })
 					console.log(getStore().favorites);
-					
-				
+			},
+			login: async (username, password) => {
+				console.log(username, password);
+				console.log("funciona")
+				try {
+                    let response = await fetch("https://sturdy-fiesta-x5v6x6xvgjp3vgxg-3000.app.github.dev/login",{
+                        method: "POST",
+                        headers: {
+                            "Content-Type":"application/json"
+                        },
+                            body: JSON.stringify({
+                            "name": username,
+                            "password": password
+                        })
+                    })
+                    let data = await response.json()
+                    console.log(data);
+                        return true
+                } catch(error) {
+                    console.log(error);
+                    return false
+                }
+            },
+			getProfile: async () => {
+				localStorage.getItem("token")
+				try {
+					let response = await fetch("https://sturdy-fiesta-x5v6x6xvgjp3vgxg-3000.app.github.dev/login",{
+                        method: "GET",
+                        headers: {
+                            "Content-Type":"application/json",
+							"Authorization": `Bearer ${token}`
+                        }
+					})
 
+						let data = await response.json()
+						localStorage.setItem("token", data.access_token)
+						return true
+					} catch(error) {
+						console.log(error);
+						return false
+					}
+
+                
+				}
 			}
+		
 		}
-	};
+	
 };
 
 export default getState;
