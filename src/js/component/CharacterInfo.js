@@ -17,7 +17,7 @@ export const CharacterInfo = (props) => {
 
 	return (
 
-		<div className="mb-3 mx-auto container d-flex justify-content-center col-lg-8 col-md-10 col-sm-12" style={{width: "50rem"}}>
+		<div className="mb-3 mx-auto container d-flex justify-content-center col-lg-8 col-md-10 col-sm-12" style={{width: "35rem"}}>
 
 		
 			<img src={`https://starwars-visualguide.com/assets/img/characters/${props.id}.jpg`} className="card-img-top p-3 w-50" alt="..."/>

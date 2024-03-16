@@ -40,12 +40,13 @@ export const Planets = () => {
 			/>
 
 			<hr className="my-4" />
-
-			<Link to="/" className="mx-3">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
+			<div className="text-center">
+                <Link to="/" className="mx-3">
+				<span className=" justify-content-center btn btn-primary btn-lg mb-5" href="#" role="button">
 					Back home
 				</span>
-			</Link>
+				</Link>
+			</div>
 		</div>
 	);
 };
