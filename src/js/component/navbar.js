@@ -16,37 +16,31 @@ export const Navbar = () => {
 
 
 	return (
-		<nav className="navbar navbar-light bg-light d-flex justify-content-between mb-3 col-lg-12 col-md-12 col-sm-12">
-			<Link className="w-5" to="/">
-			<img src="https://visualpharm.com/assets/195/Star%20Wars-595b40b85ba036ed117de471.svg" className="card-img-top mx-3" alt="..." style={{width: "30%"}}/>
-			</Link>
-			<div className="ml-auto">
-			
-				<div className="btn-group" role="group">
-				
-				<Link to="/login">
-					<div>
-					<button type="button" className="btn btn-secondary">Login</button>
-					</div>
-				</Link>
-				
-    				<button id="btnGroupDrop1" type="button" className="btn btn-primary dropdown-toggle mx-3 mr-5" data-bs-toggle="dropdown" aria-expanded="false">
-     					 Favoritos
-					<span className="bg-danger rounded-circle p-1 px-2 mx-1">{store.favorites.length}</span>
-    				</button>
-    				<ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-					{store.favorites.length > 0 && store.favorites.map((item, index) => (
-					<div className="d-flex flex-row dropdown-item align-items-center justify-content-between">
-      					<li key={index} ><Link className="align-self-start text-reset text-decoration-none pe-2 mr-5" to={`${item.type}/${item.idCharacter || item.idPlanet || item.idSpecie}`}>{item.name}</Link>
-							<i className="fa fa-solid fa-trash" onClick={() => actions.deleteFavorites(item.name)}></i>
-						</li>
-						
-					</div>
-					  ))}
-    				</ul>
-  				</div>
-				
-			</div>
-		</nav>
+		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/">
+                    <img src="https://visualpharm.com/assets/195/Star%20Wars-595b40b85ba036ed117de471.svg" className="card-img-top mx-3" alt="..." style={{width: "30%"}}/>
+                </Link>
+                <div className="ml-auto">
+                    <div className="btn-group" role="group">
+                        <Link to="/login">
+                            <button type="button" className="btn btn-secondary">Login</button>
+                        </Link>
+                        <button id="btnGroupDrop1" type="button" className="btn btn-primary dropdown-toggle mx-3 mr-5" data-bs-toggle="dropdown" aria-expanded="false">
+                            Favoritos
+                            <span className="bg-danger rounded-circle p-1 px-2 mx-1">{store.favorites.length > 0 ? store.favorites.length : 0}</span>
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            {store.favorites.length > 0 ? store.favorites.map((item, index) => (
+                                <li key={index} className="dropdown-item d-flex align-items-center justify-content-between">
+                                    <Link to={`${item.type}/${item.idCharacter || item.idPlanet || item.idSpecie}`} className="text-reset text-decoration-none pe-2 mr-5">{item.info_people?.name}</Link>
+                                    <i className="fa fa-solid fa-trash" onClick={() => actions.deleteFavorites(item.info_people?.name)}></i>
+                                </li>
+                            )): <li className="dropdown-item">Inicia sesión para ver tus favoritos.</li>}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
 	);
 };

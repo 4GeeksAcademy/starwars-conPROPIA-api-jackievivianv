@@ -12,17 +12,20 @@ export const Login = () => {
 		//initialize state here
 	});
 
-	const { store, actions } = useContext(Context);
-    const [username, setUsername] = useState("");
+    const [email, setUserEmail] = useState("");
     const [password, setPassword] = useState("")
+
+	const { store, actions } = useContext(Context);
+   
     const navigate = useNavigate();
 
-    function handleLogin(e){
+    async function handleLogin(e){
         e.preventDefault()
-        console.log(username, password);
-        let logged = actions.login(username, password);
+        console.log(email, password);
+        let logged = await actions.login(email, password);
+        console.log(logged)
         if (logged) { //true
-            navigate("/home")
+            navigate("/")
         }
     }
 	
@@ -31,9 +34,9 @@ export const Login = () => {
         <div>
 		<form className="container d-block justify-content-around p-4" onSubmit={handleLogin}>
             <div className="form-group">
-                <label for="exampleInputEmail1">Username</label>
-                    <input type="username" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)} /> 
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your username with anyone else.</small>
+                <label for="exampleInputEmail1">Email</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={(e)=>setUserEmail(e.target.value)} /> 
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
             <div className="form-group">
                 <label for="exampleInputPassword1">Password</label>

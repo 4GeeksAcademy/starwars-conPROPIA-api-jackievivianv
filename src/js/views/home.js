@@ -24,7 +24,7 @@ export const Home = () => {
 		actions.getAllCharacters();
 		actions.getAllPlanets();
 		actions.getAllSpecies();
-		actions.getProfile();
+		actions.getFavorites();
 	}, []);
 
 

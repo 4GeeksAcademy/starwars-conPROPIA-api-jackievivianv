@@ -140,8 +140,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ favorites: getStore().favorites.filter((i, _) => i.name !== deletedFavorite) })
 					console.log(getStore().favorites);
 			},
-			login: async (username, password) => {
-				console.log(username, password);
+			login: async (email, password) => {
+				console.log(email, password);
 				console.log("funciona")
 				try {
                     let response = await fetch("https://sturdy-fiesta-x5v6x6xvgjp3vgxg-3000.app.github.dev/login",{
@@ -150,11 +150,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                             "Content-Type":"application/json"
                         },
                             body: JSON.stringify({
-                            "name": username,
+                            "email": email,
                             "password": password
                         })
                     })
                     let data = await response.json()
+					if (response.status === 401) {
+						return false;
+					}
+					localStorage.setItem("token", data.access_token)
                     console.log(data);
                         return true
                 } catch(error) {
@@ -162,10 +166,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                     return false
                 }
             },
-			getProfile: async () => {
-				localStorage.getItem("token")
+			getFavorites: async () => {
+				let token = localStorage.getItem("token")
 				try {
-					let response = await fetch("https://sturdy-fiesta-x5v6x6xvgjp3vgxg-3000.app.github.dev/login",{
+					let response = await fetch("https://sturdy-fiesta-x5v6x6xvgjp3vgxg-3000.app.github.dev/user/favorites",{
                         method: "GET",
                         headers: {
                             "Content-Type":"application/json",
@@ -174,7 +178,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 
 						let data = await response.json()
-						localStorage.setItem("token", data.access_token)
+						console.log(data.favorites)
+						setStore({ favorites: data.favorites });
+				//		localStorage.setItem("token", data.access_token)
 						return true
 					} catch(error) {
 						console.log(error);
